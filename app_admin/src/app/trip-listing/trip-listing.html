@@ -1,0 +1,23 @@
+<div *ngIf="successMessage" class="alert alert-success" role="status" aria-live="polite">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert" aria-live="polite">
+  {{ errorMessage }}
+  <button type="button" class="btn btn-sm btn-outline-danger ml-2" (click)="loadTrips()">
+    Retry
+  </button>
+</div>
+
+<div class="mb-3" *ngIf="isLoggedIn$ | async">
+  <button type="button" (click)="addTrip()" class="btn btn-info">Add Trip</button>
+</div>
+
+<p *ngIf="isLoading" aria-live="polite">Loading trips...</p>
+<p *ngIf="!isLoading && !errorMessage" class="text-muted">{{ message }}</p>
+
+<div *ngIf="!isLoading && !errorMessage" class="row">
+  <div *ngFor="let trip of trips" class="col-md-4">
+    <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+  </div>
+</div>

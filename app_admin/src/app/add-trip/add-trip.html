@@ -1,0 +1,97 @@
+<div class="col-md-6 mx-auto">
+    <h2 class="text-center">Add Trip</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert" aria-live="polite">
+        {{ errorMessage }}
+    </div>
+
+    <form *ngIf="addForm" [formGroup]="addForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="add-code">Code</label>
+            <input id="add-code" type="text" formControlName="code" class="form-control"
+                [class.is-invalid]="submitted && f['code'].invalid">
+            <div *ngIf="submitted && f['code'].errors" class="invalid-feedback">
+                <span *ngIf="f['code'].errors?.['required']">Trip code is required.</span>
+                <span *ngIf="f['code'].errors?.['maxlength']">Trip code is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-name">Name</label>
+            <input id="add-name" type="text" formControlName="name" class="form-control"
+                [class.is-invalid]="submitted && f['name'].invalid">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <span *ngIf="f['name'].errors?.['required']">Name is required.</span>
+                <span *ngIf="f['name'].errors?.['maxlength']">Name is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-length">Length</label>
+            <input id="add-length" type="text" formControlName="length" class="form-control"
+                [class.is-invalid]="submitted && f['length'].invalid">
+            <div *ngIf="submitted && f['length'].errors" class="invalid-feedback">
+                <span *ngIf="f['length'].errors?.['required']">Length is required.</span>
+                <span *ngIf="f['length'].errors?.['maxlength']">Length is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-start">Start</label>
+            <input id="add-start" type="date" formControlName="start" class="form-control"
+                [class.is-invalid]="submitted && f['start'].invalid">
+            <div *ngIf="submitted && f['start'].errors" class="invalid-feedback">
+                Start date is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-resort">Resort</label>
+            <input id="add-resort" type="text" formControlName="resort" class="form-control"
+                [class.is-invalid]="submitted && f['resort'].invalid">
+            <div *ngIf="submitted && f['resort'].errors" class="invalid-feedback">
+                <span *ngIf="f['resort'].errors?.['required']">Resort is required.</span>
+                <span *ngIf="f['resort'].errors?.['maxlength']">Resort is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-price">Per Person</label>
+            <input id="add-price" type="number" step="0.01" min="0" formControlName="perPerson"
+                class="form-control" [class.is-invalid]="submitted && f['perPerson'].invalid">
+            <div *ngIf="submitted && f['perPerson'].errors" class="invalid-feedback">
+                <span *ngIf="f['perPerson'].errors?.['required']">Price is required.</span>
+                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['pattern']">
+                    Enter a valid nonnegative price with up to two decimal places.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-image">Image Name</label>
+            <input id="add-image" type="text" formControlName="image" class="form-control"
+                [class.is-invalid]="submitted && f['image'].invalid">
+            <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                <span *ngIf="f['image'].errors?.['required']">Image name is required.</span>
+                <span *ngIf="f['image'].errors?.['maxlength']">Image name is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-description">Description</label>
+            <textarea id="add-description" formControlName="description" class="form-control" rows="4"
+                [class.is-invalid]="submitted && f['description'].invalid"></textarea>
+            <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                <span *ngIf="f['description'].errors?.['required']">Description is required.</span>
+                <span *ngIf="f['description'].errors?.['maxlength']">Description is too long.</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info" [disabled]="isSaving">
+            {{ isSaving ? 'Saving...' : 'Save Trip' }}
+        </button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="cancel()" [disabled]="isSaving">
+            Cancel
+        </button>
+    </form>
+</div>

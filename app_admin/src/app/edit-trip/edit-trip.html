@@ -1,0 +1,99 @@
+<div class="col-md-6 mx-auto">
+    <h2 class="text-center">Edit Trip</h2>
+
+    <p *ngIf="isLoading" class="text-center" aria-live="polite">Loading trip...</p>
+
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert" aria-live="polite">
+        {{ errorMessage }}
+    </div>
+
+    <form *ngIf="!isLoading && !errorMessage && editForm" [formGroup]="editForm"
+        (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="edit-code">Code</label>
+            <input id="edit-code" type="text" formControlName="code" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-name">Name</label>
+            <input id="edit-name" type="text" formControlName="name" class="form-control"
+                [class.is-invalid]="submitted && f['name'].invalid">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <span *ngIf="f['name'].errors?.['required']">Name is required.</span>
+                <span *ngIf="f['name'].errors?.['maxlength']">Name is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-length">Length</label>
+            <input id="edit-length" type="text" formControlName="length" class="form-control"
+                [class.is-invalid]="submitted && f['length'].invalid">
+            <div *ngIf="submitted && f['length'].errors" class="invalid-feedback">
+                <span *ngIf="f['length'].errors?.['required']">Length is required.</span>
+                <span *ngIf="f['length'].errors?.['maxlength']">Length is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-start">Start</label>
+            <input id="edit-start" type="date" formControlName="start" class="form-control"
+                [class.is-invalid]="submitted && f['start'].invalid">
+            <div *ngIf="submitted && f['start'].errors" class="invalid-feedback">
+                Start date is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-resort">Resort</label>
+            <input id="edit-resort" type="text" formControlName="resort" class="form-control"
+                [class.is-invalid]="submitted && f['resort'].invalid">
+            <div *ngIf="submitted && f['resort'].errors" class="invalid-feedback">
+                <span *ngIf="f['resort'].errors?.['required']">Resort is required.</span>
+                <span *ngIf="f['resort'].errors?.['maxlength']">Resort is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-price">Per Person</label>
+            <input id="edit-price" type="number" step="0.01" min="0" formControlName="perPerson"
+                class="form-control" [class.is-invalid]="submitted && f['perPerson'].invalid">
+            <div *ngIf="submitted && f['perPerson'].errors" class="invalid-feedback">
+                <span *ngIf="f['perPerson'].errors?.['required']">Price is required.</span>
+                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['pattern']">
+                    Enter a valid nonnegative price with up to two decimal places.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-image">Image Name</label>
+            <input id="edit-image" type="text" formControlName="image" class="form-control"
+                [class.is-invalid]="submitted && f['image'].invalid">
+            <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                <span *ngIf="f['image'].errors?.['required']">Image name is required.</span>
+                <span *ngIf="f['image'].errors?.['maxlength']">Image name is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-description">Description</label>
+            <textarea id="edit-description" formControlName="description" class="form-control" rows="4"
+                [class.is-invalid]="submitted && f['description'].invalid"></textarea>
+            <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                <span *ngIf="f['description'].errors?.['required']">Description is required.</span>
+                <span *ngIf="f['description'].errors?.['maxlength']">Description is too long.</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info" [disabled]="isSaving">
+            {{ isSaving ? 'Saving...' : 'Save Changes' }}
+        </button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="cancel()" [disabled]="isSaving">
+            Cancel
+        </button>
+    </form>
+
+    <button *ngIf="!isLoading && errorMessage" type="button" class="btn btn-secondary" (click)="cancel()">
+        Back to Trips
+    </button>
+</div>
