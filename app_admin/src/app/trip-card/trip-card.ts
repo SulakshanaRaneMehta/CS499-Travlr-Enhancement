@@ -20,6 +20,12 @@ export class TripCardComponent {
     style: 'currency',
     currency: 'USD'
   });
+  private readonly dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC'
+  });
 
   constructor(private router: Router, private authenticationService: Authentication) {
     this.isLoggedIn$ = this.authenticationService.isLoggedIn$;
@@ -33,6 +39,16 @@ export class TripCardComponent {
     }
 
     return this.currencyFormatter.format(amount);
+  }
+
+  public formatDate(value: string | Date | null | undefined): string {
+    const date = value instanceof Date ? value : new Date(String(value ?? ''));
+
+    if (Number.isNaN(date.getTime())) {
+      return 'Date unavailable';
+    }
+
+    return this.dateFormatter.format(date);
   }
 
   public editTrip(trip: Trip): void {

@@ -1,15 +1,21 @@
-<div class="card">
-    <div class="card-header">{{ trip.name }}</div>
+<div class="card h-100">
+    <div class="card-header d-flex justify-content-between gap-2">
+        <span>{{ trip.name }}</span>
+        <span class="trip-code">{{ trip.code }}</span>
+    </div>
     <img [src]="'assets/images/' + trip.image" [alt]="trip.name + ' at ' + trip.resort" class="card-img-top">
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
         <h6 class="card-subtitle mb-2 text-muted">
             {{ trip.resort }}
         </h6>
-        <p class="card-subtitle mt-3 mb-3 text-muted">
+        <p class="card-subtitle mt-2 mb-2 text-muted">
+            Departs {{ formatDate(trip.start) }}
+        </p>
+        <p class="card-subtitle mb-3 text-muted">
             {{ trip.length }} only {{ formatPrice(trip.perPerson) }} per person
         </p>
         <p class="card-text">{{ trip.description | plainText }}</p>
-        <div *ngIf="isLoggedIn$ | async">
+        <div *ngIf="isLoggedIn$ | async" class="mt-auto">
             <button type="button" (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
         </div>
     </div>

@@ -42,6 +42,11 @@ describe('TripCardComponent', () => {
     expect(component.formatPrice('999.00')).toBe('$999.00');
   });
 
+  it('formats departure dates in a stable UTC representation', () => {
+    expect(component.formatDate('2026-08-10T08:00:00Z')).toBe('Aug 10, 2026');
+    expect(component.formatDate('not-a-date')).toBe('Date unavailable');
+  });
+
   it('navigates with the selected trip code', () => {
     component.editTrip({ ...trip, code: ' GALR210 ' });
     expect(router.navigate).toHaveBeenCalledWith(['/edit-trip', 'GALR210']);

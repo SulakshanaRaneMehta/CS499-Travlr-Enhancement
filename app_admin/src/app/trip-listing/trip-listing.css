@@ -1,0 +1,23 @@
+.catalog-controls {
+  border: 1px solid #d9e2ea;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+}
+
+.catalog-controls .form-label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.result-summary {
+  border-left: 0.25rem solid #0d6efd;
+  padding-left: 0.85rem;
+}
+
+.algorithm-note {
+  color: #36576f;
+  font-size: 0.9rem;
+}
+
+.page-link:disabled {
+  cursor: not-allowed;
+}
