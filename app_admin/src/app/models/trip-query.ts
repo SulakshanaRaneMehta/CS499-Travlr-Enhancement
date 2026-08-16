@@ -2,7 +2,7 @@ import { Trip } from './trip';
 
 export type TripSortField = 'name' | 'price' | 'start';
 export type SortDirection = 'asc' | 'desc';
-export type TripSearchMode = 'none' | 'indexed-code' | 'linear-text';
+export type TripSearchMode = 'none' | 'indexed-code' | 'database-text';
 
 export interface TripQueryCriteria {
   searchTerm: string;

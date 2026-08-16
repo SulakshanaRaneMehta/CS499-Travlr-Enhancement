@@ -1,0 +1,441 @@
+{
+  "generatedAt": "2026-08-01T16:50:49.767Z",
+  "database": "travlr",
+  "collection": "trips",
+  "passed": true,
+  "indexAudit": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "uniq_trip_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_name_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_price_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_departure_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_resort_price_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_nights_code",
+        "passed": true,
+        "issues": []
+      },
+      {
+        "name": "trip_catalog_text",
+        "passed": true,
+        "issues": []
+      }
+    ],
+    "observedNames": [
+      "_id_",
+      "trip_catalog_text",
+      "trip_departure_code",
+      "trip_name_code",
+      "trip_nights_code",
+      "trip_price_code",
+      "trip_resort_price_code",
+      "uniq_trip_code"
+    ]
+  },
+  "documentAudit": {
+    "passed": true,
+    "count": 12,
+    "validated": 12,
+    "typeSummary": [
+      {
+        "_id": {
+          "perPerson": "int",
+          "nights": "int"
+        },
+        "count": 12
+      }
+    ],
+    "duplicateCodes": [],
+    "numericStorageOnly": true,
+    "validationErrors": []
+  },
+  "queryAudit": {
+    "passed": true,
+    "scenarios": [
+      {
+        "name": "database pagination",
+        "passed": true,
+        "details": {
+          "items": [
+            {
+              "_id": "6a6541076db7a17f061e2abd",
+              "code": "BLUE260530",
+              "name": "Bluewater Weekend",
+              "length": "3 nights / 4 days",
+              "start": "2026-05-30T08:00:00.000Z",
+              "resort": "Blue Harbor, 3 stars",
+              "perPerson": 699,
+              "image": "sea-sound.jpg",
+              "description": "<p>A weekend package with beach activities and a short bluewater cruise.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 3,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2ab5",
+              "code": "CLAR210621",
+              "name": "Claire’s Reef",
+              "length": "7 nights / 8 days",
+              "start": "2026-06-21T08:00:00.000Z",
+              "resort": "Coral Sands, 5 stars",
+              "perPerson": 1999,
+              "image": "reef3.jpg",
+              "description": "<p>A premium island stay with private beach access, sailing, and reef exploration.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 7,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2abc",
+              "code": "CORA260418",
+              "name": "Coral Adventure",
+              "length": "6 nights / 7 days",
+              "start": "2026-04-18T08:00:00.000Z",
+              "resort": "Coral Sands, 5 stars",
+              "perPerson": 1499,
+              "image": "reef3.jpg",
+              "description": "<p>A coral reef adventure with guided dives and an evening catamaran trip.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 6,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            }
+          ],
+          "totalItems": 12,
+          "totalPages": 4,
+          "page": 1,
+          "pageSize": 3,
+          "startItem": 1,
+          "endItem": 3,
+          "searchMode": "none"
+        }
+      },
+      {
+        "name": "unique-index exact-code lookup",
+        "passed": true,
+        "details": {
+          "items": [
+            {
+              "_id": "6a6541076db7a17f061e2abd",
+              "code": "BLUE260530",
+              "name": "Bluewater Weekend",
+              "length": "3 nights / 4 days",
+              "start": "2026-05-30T08:00:00.000Z",
+              "resort": "Blue Harbor, 3 stars",
+              "perPerson": 699,
+              "image": "sea-sound.jpg",
+              "description": "<p>A weekend package with beach activities and a short bluewater cruise.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 3,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            }
+          ],
+          "totalItems": 1,
+          "totalPages": 1,
+          "page": 1,
+          "pageSize": 3,
+          "startItem": 1,
+          "endItem": 1,
+          "searchMode": "indexed-code"
+        }
+      },
+      {
+        "name": "numeric price sorting",
+        "passed": true,
+        "details": {
+          "items": [
+            {
+              "_id": "6a6541076db7a17f061e2abe",
+              "code": "REEF261220",
+              "name": "Reef Explorer",
+              "length": "9 nights / 10 days",
+              "start": "2026-12-20T08:00:00.000Z",
+              "resort": "Palm Bay, 4 stars",
+              "perPerson": 2199,
+              "image": "reef1.jpg",
+              "description": "<p>A complete reef itinerary with several dive sites and extended island time.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 9,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2ab5",
+              "code": "CLAR210621",
+              "name": "Claire’s Reef",
+              "length": "7 nights / 8 days",
+              "start": "2026-06-21T08:00:00.000Z",
+              "resort": "Coral Sands, 5 stars",
+              "perPerson": 1999,
+              "image": "reef3.jpg",
+              "description": "<p>A premium island stay with private beach access, sailing, and reef exploration.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 7,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2ab9",
+              "code": "ISLE261002",
+              "name": "Island Explorer",
+              "length": "8 nights / 9 days",
+              "start": "2026-10-02T08:00:00.000Z",
+              "resort": "Emerald Bay, 3 stars",
+              "perPerson": 1599,
+              "image": "dive-site.png",
+              "description": "<p>An extended island itinerary with diving, hiking, and village visits.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 8,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            }
+          ],
+          "totalItems": 12,
+          "totalPages": 4,
+          "page": 1,
+          "pageSize": 3,
+          "startItem": 1,
+          "endItem": 3,
+          "searchMode": "none"
+        }
+      },
+      {
+        "name": "MongoDB text search",
+        "passed": true,
+        "details": {
+          "items": [
+            {
+              "_id": "6a6541076db7a17f061e2ab5",
+              "code": "CLAR210621",
+              "name": "Claire’s Reef",
+              "length": "7 nights / 8 days",
+              "start": "2026-06-21T08:00:00.000Z",
+              "resort": "Coral Sands, 5 stars",
+              "perPerson": 1999,
+              "image": "reef3.jpg",
+              "description": "<p>A premium island stay with private beach access, sailing, and reef exploration.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 7,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2abc",
+              "code": "CORA260418",
+              "name": "Coral Adventure",
+              "length": "6 nights / 7 days",
+              "start": "2026-04-18T08:00:00.000Z",
+              "resort": "Coral Sands, 5 stars",
+              "perPerson": 1499,
+              "image": "reef3.jpg",
+              "description": "<p>A coral reef adventure with guided dives and an evening catamaran trip.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 6,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2ab4",
+              "code": "DAWR210315",
+              "name": "Dawson’s Reef",
+              "length": "6 nights / 7 days",
+              "start": "2026-03-15T08:00:00.000Z",
+              "resort": "Blue Lagoon, 4 stars",
+              "perPerson": 1199,
+              "image": "reef2.jpg",
+              "description": "<p>A longer diving package with lagoon excursions and two guided reef sessions.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 6,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2ab3",
+              "code": "GALR210214",
+              "name": "Gale Reef",
+              "length": "4 nights / 5 days",
+              "start": "2026-02-14T00:00:00.000Z",
+              "resort": "Emerald Bay, 3 stars",
+              "perPerson": 799,
+              "image": "reef1.jpg",
+              "description": "<p>A relaxed reef getaway with guided snorkeling, beach time, and an evening cruise.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 4,
+              "updatedAt": "2026-08-01T16:49:06.840Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2aba",
+              "code": "OCEA260612",
+              "name": "Ocean Vista",
+              "length": "4 nights / 5 days",
+              "start": "2026-06-12T08:00:00.000Z",
+              "resort": "Ocean Vista, 4 stars",
+              "perPerson": 899,
+              "image": "first-class.jpg",
+              "description": "<p>An oceanfront stay with a reef cruise and a half-day coastal excursion.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 4,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2abe",
+              "code": "REEF261220",
+              "name": "Reef Explorer",
+              "length": "9 nights / 10 days",
+              "start": "2026-12-20T08:00:00.000Z",
+              "resort": "Palm Bay, 4 stars",
+              "perPerson": 2199,
+              "image": "reef1.jpg",
+              "description": "<p>A complete reef itinerary with several dive sites and extended island time.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 9,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            }
+          ],
+          "totalItems": 6,
+          "totalPages": 1,
+          "page": 1,
+          "pageSize": 9,
+          "startItem": 1,
+          "endItem": 6,
+          "searchMode": "database-text"
+        }
+      },
+      {
+        "name": "combined resort and numeric ranges",
+        "passed": true,
+        "details": {
+          "items": [
+            {
+              "_id": "6a6541076db7a17f061e2ab8",
+              "code": "HARB260805",
+              "name": "Harbor Escape",
+              "length": "2 nights / 3 days",
+              "start": "2026-08-05T08:00:00.000Z",
+              "resort": "Blue Harbor, 3 stars",
+              "perPerson": 499,
+              "image": "kayak.jpg",
+              "description": "<p>A compact harbor weekend with kayaking and a seafood dinner.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 2,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            },
+            {
+              "_id": "6a6541076db7a17f061e2abd",
+              "code": "BLUE260530",
+              "name": "Bluewater Weekend",
+              "length": "3 nights / 4 days",
+              "start": "2026-05-30T08:00:00.000Z",
+              "resort": "Blue Harbor, 3 stars",
+              "perPerson": 699,
+              "image": "sea-sound.jpg",
+              "description": "<p>A weekend package with beach activities and a short bluewater cruise.</p>",
+              "__v": 0,
+              "createdAt": "2026-08-01T16:28:57.472Z",
+              "nights": 3,
+              "updatedAt": "2026-08-01T16:30:10.357Z"
+            }
+          ],
+          "totalItems": 2,
+          "totalPages": 1,
+          "page": 1,
+          "pageSize": 9,
+          "startItem": 1,
+          "endItem": 2,
+          "searchMode": "none"
+        }
+      }
+    ]
+  },
+  "explainEvidence": [
+    {
+      "name": "exact code lookup",
+      "indexesObserved": [
+        "uniq_trip_code"
+      ],
+      "executionStats": {
+        "nReturned": 1,
+        "totalKeysExamined": 1,
+        "totalDocsExamined": 1,
+        "executionTimeMillis": 0
+      }
+    },
+    {
+      "name": "price sort and page extraction",
+      "indexesObserved": [
+        "trip_price_code"
+      ],
+      "executionStats": {
+        "nReturned": 3,
+        "totalKeysExamined": 3,
+        "totalDocsExamined": 3,
+        "executionTimeMillis": 0
+      }
+    },
+    {
+      "name": "resort and price filter",
+      "indexesObserved": [
+        "trip_price_code",
+        "trip_resort_price_code"
+      ],
+      "executionStats": {
+        "nReturned": 2,
+        "totalKeysExamined": 2,
+        "totalDocsExamined": 2,
+        "executionTimeMillis": 1
+      }
+    },
+    {
+      "name": "nights range filter",
+      "indexesObserved": [
+        "trip_nights_code"
+      ],
+      "executionStats": {
+        "nReturned": 9,
+        "totalKeysExamined": 9,
+        "totalDocsExamined": 9,
+        "executionTimeMillis": 0
+      }
+    },
+    {
+      "name": "catalog text search",
+      "indexesObserved": [
+        "trip_catalog_text"
+      ],
+      "executionStats": {
+        "nReturned": 6,
+        "totalKeysExamined": 6,
+        "totalDocsExamined": 6,
+        "executionTimeMillis": 0
+      }
+    }
+  ]
+}

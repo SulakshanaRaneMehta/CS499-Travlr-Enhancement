@@ -66,3 +66,16 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# Generated build and system files
+.angular/
+**/.angular/
+dist/
+**/dist/
+.DS_Store
+**/.DS_Store
+__MACOSX/
+
+# Local environment configuration must never be published
+.env
+**/.env

@@ -13,6 +13,7 @@
             <div *ngIf="submitted && f['code'].errors" class="invalid-feedback">
                 <span *ngIf="f['code'].errors?.['required']">Trip code is required.</span>
                 <span *ngIf="f['code'].errors?.['maxlength']">Trip code is too long.</span>
+                <span *ngIf="f['code'].errors?.['pattern']">Use only letters, numbers, and hyphens.</span>
             </div>
         </div>
 
@@ -33,6 +34,18 @@
             <div *ngIf="submitted && f['length'].errors" class="invalid-feedback">
                 <span *ngIf="f['length'].errors?.['required']">Length is required.</span>
                 <span *ngIf="f['length'].errors?.['maxlength']">Length is too long.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="add-nights">Nights</label>
+            <input id="add-nights" type="number" step="1" min="1" max="365" formControlName="nights"
+                class="form-control" [class.is-invalid]="submitted && f['nights'].invalid">
+            <div *ngIf="submitted && f['nights'].errors" class="invalid-feedback">
+                <span *ngIf="f['nights'].errors?.['required']">Number of nights is required.</span>
+                <span *ngIf="f['nights'].errors?.['min'] || f['nights'].errors?.['max'] || f['nights'].errors?.['pattern']">
+                    Enter a whole number from 1 through 365.
+                </span>
             </div>
         </div>
 
@@ -61,7 +74,7 @@
                 class="form-control" [class.is-invalid]="submitted && f['perPerson'].invalid">
             <div *ngIf="submitted && f['perPerson'].errors" class="invalid-feedback">
                 <span *ngIf="f['perPerson'].errors?.['required']">Price is required.</span>
-                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['pattern']">
+                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['max'] || f['perPerson'].errors?.['pattern']">
                     Enter a valid nonnegative price with up to two decimal places.
                 </span>
             </div>

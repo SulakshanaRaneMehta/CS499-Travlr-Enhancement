@@ -1,0 +1,350 @@
+{
+  "generatedAt": "2026-08-01T16:32:26.201Z",
+  "baseUrl": "http://localhost:3000/api",
+  "passed": true,
+  "results": [
+    {
+      "name": "default database page",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips?page=1&pageSize=3&sortField=name&sortDirection=asc",
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "_id": "6a6541076db7a17f061e2abd",
+            "code": "BLUE260530",
+            "name": "Bluewater Weekend",
+            "length": "3 nights / 4 days",
+            "start": "2026-05-30T08:00:00.000Z",
+            "resort": "Blue Harbor, 3 stars",
+            "perPerson": 699,
+            "image": "sea-sound.jpg",
+            "description": "<p>A weekend package with beach activities and a short bluewater cruise.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 3,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab5",
+            "code": "CLAR210621",
+            "name": "Claire’s Reef",
+            "length": "7 nights / 8 days",
+            "start": "2026-06-21T08:00:00.000Z",
+            "resort": "Coral Sands, 5 stars",
+            "perPerson": 1999,
+            "image": "reef3.jpg",
+            "description": "<p>A premium island stay with private beach access, sailing, and reef exploration.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 7,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2abc",
+            "code": "CORA260418",
+            "name": "Coral Adventure",
+            "length": "6 nights / 7 days",
+            "start": "2026-04-18T08:00:00.000Z",
+            "resort": "Coral Sands, 5 stars",
+            "perPerson": 1499,
+            "image": "reef3.jpg",
+            "description": "<p>A coral reef adventure with guided dives and an evening catamaran trip.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 6,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          }
+        ],
+        "totalItems": 12,
+        "totalPages": 4,
+        "page": 1,
+        "pageSize": 3,
+        "startItem": 1,
+        "endItem": 3,
+        "searchMode": "none"
+      }
+    },
+    {
+      "name": "lowercase exact-code lookup",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips?searchTerm=galr210214&pageSize=3",
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "_id": "6a6541076db7a17f061e2ab3",
+            "code": "GALR210214",
+            "name": "Gale Reef",
+            "length": "4 nights / 5 days",
+            "start": "2026-02-14T08:00:00.000Z",
+            "resort": "Emerald Bay, 3 stars",
+            "perPerson": 799,
+            "image": "reef1.jpg",
+            "description": "<p>A relaxed reef getaway with guided snorkeling, beach time, and an evening cruise.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 4,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          }
+        ],
+        "totalItems": 1,
+        "totalPages": 1,
+        "page": 1,
+        "pageSize": 3,
+        "startItem": 1,
+        "endItem": 1,
+        "searchMode": "indexed-code"
+      }
+    },
+    {
+      "name": "database text search",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips?searchTerm=reef&page=1&pageSize=9&sortField=name&sortDirection=asc",
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "_id": "6a6541076db7a17f061e2ab5",
+            "code": "CLAR210621",
+            "name": "Claire’s Reef",
+            "length": "7 nights / 8 days",
+            "start": "2026-06-21T08:00:00.000Z",
+            "resort": "Coral Sands, 5 stars",
+            "perPerson": 1999,
+            "image": "reef3.jpg",
+            "description": "<p>A premium island stay with private beach access, sailing, and reef exploration.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 7,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2abc",
+            "code": "CORA260418",
+            "name": "Coral Adventure",
+            "length": "6 nights / 7 days",
+            "start": "2026-04-18T08:00:00.000Z",
+            "resort": "Coral Sands, 5 stars",
+            "perPerson": 1499,
+            "image": "reef3.jpg",
+            "description": "<p>A coral reef adventure with guided dives and an evening catamaran trip.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 6,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab4",
+            "code": "DAWR210315",
+            "name": "Dawson’s Reef",
+            "length": "6 nights / 7 days",
+            "start": "2026-03-15T08:00:00.000Z",
+            "resort": "Blue Lagoon, 4 stars",
+            "perPerson": 1199,
+            "image": "reef2.jpg",
+            "description": "<p>A longer diving package with lagoon excursions and two guided reef sessions.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 6,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab3",
+            "code": "GALR210214",
+            "name": "Gale Reef",
+            "length": "4 nights / 5 days",
+            "start": "2026-02-14T08:00:00.000Z",
+            "resort": "Emerald Bay, 3 stars",
+            "perPerson": 799,
+            "image": "reef1.jpg",
+            "description": "<p>A relaxed reef getaway with guided snorkeling, beach time, and an evening cruise.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 4,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2aba",
+            "code": "OCEA260612",
+            "name": "Ocean Vista",
+            "length": "4 nights / 5 days",
+            "start": "2026-06-12T08:00:00.000Z",
+            "resort": "Ocean Vista, 4 stars",
+            "perPerson": 899,
+            "image": "first-class.jpg",
+            "description": "<p>An oceanfront stay with a reef cruise and a half-day coastal excursion.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 4,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2abe",
+            "code": "REEF261220",
+            "name": "Reef Explorer",
+            "length": "9 nights / 10 days",
+            "start": "2026-12-20T08:00:00.000Z",
+            "resort": "Palm Bay, 4 stars",
+            "perPerson": 2199,
+            "image": "reef1.jpg",
+            "description": "<p>A complete reef itinerary with several dive sites and extended island time.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 9,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          }
+        ],
+        "totalItems": 6,
+        "totalPages": 1,
+        "page": 1,
+        "pageSize": 9,
+        "startItem": 1,
+        "endItem": 6,
+        "searchMode": "database-text"
+      }
+    },
+    {
+      "name": "combined database filters",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips?resort=Emerald%20Bay%2C%203%20stars&minPrice=700&maxPrice=1700&minNights=4&maxNights=8&sortField=price&sortDirection=asc&page=1&pageSize=9",
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "_id": "6a6541076db7a17f061e2ab3",
+            "code": "GALR210214",
+            "name": "Gale Reef",
+            "length": "4 nights / 5 days",
+            "start": "2026-02-14T08:00:00.000Z",
+            "resort": "Emerald Bay, 3 stars",
+            "perPerson": 799,
+            "image": "reef1.jpg",
+            "description": "<p>A relaxed reef getaway with guided snorkeling, beach time, and an evening cruise.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 4,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab9",
+            "code": "ISLE261002",
+            "name": "Island Explorer",
+            "length": "8 nights / 9 days",
+            "start": "2026-10-02T08:00:00.000Z",
+            "resort": "Emerald Bay, 3 stars",
+            "perPerson": 1599,
+            "image": "dive-site.png",
+            "description": "<p>An extended island itinerary with diving, hiking, and village visits.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 8,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          }
+        ],
+        "totalItems": 2,
+        "totalPages": 1,
+        "page": 1,
+        "pageSize": 9,
+        "startItem": 1,
+        "endItem": 2,
+        "searchMode": "none"
+      }
+    },
+    {
+      "name": "database page two",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips?page=2&pageSize=3&sortField=name&sortDirection=asc",
+      "error": "",
+      "response": {
+        "items": [
+          {
+            "_id": "6a6541076db7a17f061e2ab4",
+            "code": "DAWR210315",
+            "name": "Dawson’s Reef",
+            "length": "6 nights / 7 days",
+            "start": "2026-03-15T08:00:00.000Z",
+            "resort": "Blue Lagoon, 4 stars",
+            "perPerson": 1199,
+            "image": "reef2.jpg",
+            "description": "<p>A longer diving package with lagoon excursions and two guided reef sessions.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 6,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab3",
+            "code": "GALR210214",
+            "name": "Gale Reef",
+            "length": "4 nights / 5 days",
+            "start": "2026-02-14T08:00:00.000Z",
+            "resort": "Emerald Bay, 3 stars",
+            "perPerson": 799,
+            "image": "reef1.jpg",
+            "description": "<p>A relaxed reef getaway with guided snorkeling, beach time, and an evening cruise.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 4,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          },
+          {
+            "_id": "6a6541076db7a17f061e2ab8",
+            "code": "HARB260805",
+            "name": "Harbor Escape",
+            "length": "2 nights / 3 days",
+            "start": "2026-08-05T08:00:00.000Z",
+            "resort": "Blue Harbor, 3 stars",
+            "perPerson": 499,
+            "image": "kayak.jpg",
+            "description": "<p>A compact harbor weekend with kayaking and a seafood dinner.</p>",
+            "__v": 0,
+            "createdAt": "2026-08-01T16:28:57.472Z",
+            "nights": 2,
+            "updatedAt": "2026-08-01T16:30:10.357Z"
+          }
+        ],
+        "totalItems": 12,
+        "totalPages": 4,
+        "page": 2,
+        "pageSize": 3,
+        "startItem": 4,
+        "endItem": 6,
+        "searchMode": "none"
+      }
+    },
+    {
+      "name": "controlled invalid-range response",
+      "passed": true,
+      "status": 400,
+      "url": "http://localhost:3000/api/trips?minPrice=2000&maxPrice=1000",
+      "error": "",
+      "response": {
+        "message": "Minimum price cannot be greater than maximum price."
+      }
+    },
+    {
+      "name": "database resort options",
+      "passed": true,
+      "status": 200,
+      "url": "http://localhost:3000/api/trips/resorts",
+      "error": "",
+      "response": {
+        "resorts": [
+          "Blue Harbor, 3 stars",
+          "Blue Lagoon, 4 stars",
+          "Coral Sands, 5 stars",
+          "Emerald Bay, 3 stars",
+          "Ocean Vista, 4 stars",
+          "Palm Bay, 4 stars",
+          "Sunset Cove, 4 stars"
+        ]
+      }
+    }
+  ]
+}

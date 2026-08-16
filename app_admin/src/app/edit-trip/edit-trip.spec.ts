@@ -19,9 +19,10 @@ describe('EditTripComponent', () => {
     code: 'GALR210',
     name: 'Gale Reef',
     length: '4 nights',
+    nights: 4,
     start: '2026-08-10T00:00:00.000Z',
     resort: 'Emerald Bay',
-    perPerson: '999.00',
+    perPerson: 999,
     image: 'reef.jpg',
     description: 'A four-night island getaway.'
   };

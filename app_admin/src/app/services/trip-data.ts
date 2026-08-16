@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
 import { Trip } from '../models/trip';
+import {
+  TripQueryCriteria,
+  TripQueryResult
+} from '../models/trip-query';
 import { environment } from '../../environments/environment';
+
+interface ResortOptionsResponse {
+  resorts: string[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +23,15 @@ export class TripDataService {
 
   constructor(private http: HttpClient) {}
 
-  getTrips(): Observable<Trip[]> {
-    return this.http.get<Trip[]>(this.tripsUrl);
+  getTrips(criteria: TripQueryCriteria): Observable<TripQueryResult> {
+    return this.http.get<TripQueryResult>(this.tripsUrl, {
+      params: this.buildTripQueryParams(criteria)
+    });
+  }
+
+  getResorts(): Observable<string[]> {
+    return this.http.get<ResortOptionsResponse>(`${this.tripsUrl}/resorts`)
+      .pipe(map((response) => response.resorts));
   }
 
   addTrip(formData: Trip): Observable<Trip> {
@@ -49,5 +64,41 @@ export class TripDataService {
       email: user.email,
       password: passwd
     });
+  }
+
+  private buildTripQueryParams(criteria: TripQueryCriteria): HttpParams {
+    let params = new HttpParams()
+      .set('sortField', criteria.sortField)
+      .set('sortDirection', criteria.sortDirection)
+      .set('page', String(criteria.page))
+      .set('pageSize', String(criteria.pageSize));
+
+    const textValues: Array<[string, string]> = [
+      ['searchTerm', criteria.searchTerm.trim()],
+      ['resort', criteria.resort.trim()],
+      ['earliestStart', criteria.earliestStart],
+      ['latestStart', criteria.latestStart]
+    ];
+
+    for (const [key, value] of textValues) {
+      if (value) {
+        params = params.set(key, value);
+      }
+    }
+
+    const numberValues: Array<[string, number | null]> = [
+      ['minPrice', criteria.minPrice],
+      ['maxPrice', criteria.maxPrice],
+      ['minNights', criteria.minNights],
+      ['maxNights', criteria.maxNights]
+    ];
+
+    for (const [key, value] of numberValues) {
+      if (value !== null && Number.isFinite(value)) {
+        params = params.set(key, String(value));
+      }
+    }
+
+    return params;
   }
 }

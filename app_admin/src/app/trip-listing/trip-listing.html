@@ -36,7 +36,8 @@
         type="search"
         class="form-control"
         [(ngModel)]="criteria.searchTerm"
-        placeholder="Code, name, resort, or description">
+        placeholder="Code, name, resort, or description"
+        maxlength="80">
     </div>
 
     <div class="col-12 col-md-6 col-lg-3">
@@ -72,6 +73,7 @@
         class="form-control"
         [(ngModel)]="criteria.minPrice"
         min="0"
+        max="100000"
         step="0.01">
     </div>
 
@@ -84,6 +86,7 @@
         class="form-control"
         [(ngModel)]="criteria.maxPrice"
         min="0"
+        max="100000"
         step="0.01">
     </div>
 
@@ -115,7 +118,8 @@
         type="number"
         class="form-control"
         [(ngModel)]="criteria.minNights"
-        min="0"
+        min="1"
+        max="365"
         step="1">
     </div>
 
@@ -127,7 +131,8 @@
         type="number"
         class="form-control"
         [(ngModel)]="criteria.maxNights"
-        min="0"
+        min="1"
+        max="365"
         step="1">
     </div>
 

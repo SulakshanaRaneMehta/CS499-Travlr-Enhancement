@@ -1,21 +1,25 @@
 const Trip = require('../models/travlr');
+const {
+    normalizeTripCode,
+    tripPayload
+} = require('../utils/trip-values');
+const {
+    TripQueryValidationError,
+    createTripQueryService
+} = require('../services/trip-query');
 
-const normalizeText = (value) => typeof value === 'string' ? value.trim() : value;
-const normalizeTripCode = (value) => normalizeText(value) || '';
-
-const tripPayload = (body, code = body.code) => ({
-    code: normalizeTripCode(code),
-    name: normalizeText(body.name),
-    length: normalizeText(body.length),
-    start: body.start,
-    resort: normalizeText(body.resort),
-    perPerson: normalizeText(body.perPerson),
-    image: normalizeText(body.image),
-    description: normalizeText(body.description)
-});
+const tripQueryService = createTripQueryService(Trip);
 
 const sendDatabaseError = (res, error, fallbackMessage) => {
-    if (error?.name === 'ValidationError' || error?.name === 'CastError') {
+    if (error instanceof TripQueryValidationError) {
+        return res.status(error.status).json({ message: error.message });
+    }
+
+    if (
+        error?.name === 'ValidationError' ||
+        error?.name === 'CastError' ||
+        error?.name === 'StrictModeError'
+    ) {
         return res.status(400).json({ message: 'The trip data is invalid.' });
     }
 
@@ -26,14 +30,30 @@ const sendDatabaseError = (res, error, fallbackMessage) => {
     return res.status(500).json({ message: fallbackMessage });
 };
 
-const tripsList = async (_req, res) => {
-    try {
-        const trips = await Trip.find({}).exec();
-        return res.status(200).json(trips);
-    } catch (error) {
-        return sendDatabaseError(res, error, 'Trips could not be retrieved.');
+const createCatalogHandlers = (queryService) => ({
+    tripsList: async (req, res) => {
+        try {
+            const result = await queryService.queryTrips(req.query);
+            return res.status(200).json(result);
+        } catch (error) {
+            return sendDatabaseError(res, error, 'Trips could not be retrieved.');
+        }
+    },
+    tripsListResorts: async (_req, res) => {
+        try {
+            const resorts = await queryService.listResorts();
+            return res.status(200).json({ resorts });
+        } catch (error) {
+            return sendDatabaseError(
+                res,
+                error,
+                'Resort options could not be retrieved.'
+            );
+        }
     }
-};
+});
+
+const { tripsList, tripsListResorts } = createCatalogHandlers(tripQueryService);
 
 const tripsFindByCode = async (req, res) => {
     try {
@@ -79,9 +99,11 @@ const tripsUpdateTrip = async (req, res) => {
 };
 
 module.exports = {
+    createCatalogHandlers,
     normalizeTripCode,
     tripPayload,
     tripsList,
+    tripsListResorts,
     tripsFindByCode,
     tripsAddTrip,
     tripsUpdateTrip

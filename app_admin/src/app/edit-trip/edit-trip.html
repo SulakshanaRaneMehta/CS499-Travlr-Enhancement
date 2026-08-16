@@ -35,6 +35,18 @@
         </div>
 
         <div class="form-group">
+            <label for="edit-nights">Nights</label>
+            <input id="edit-nights" type="number" step="1" min="1" max="365" formControlName="nights"
+                class="form-control" [class.is-invalid]="submitted && f['nights'].invalid">
+            <div *ngIf="submitted && f['nights'].errors" class="invalid-feedback">
+                <span *ngIf="f['nights'].errors?.['required']">Number of nights is required.</span>
+                <span *ngIf="f['nights'].errors?.['min'] || f['nights'].errors?.['max'] || f['nights'].errors?.['pattern']">
+                    Enter a whole number from 1 through 365.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="edit-start">Start</label>
             <input id="edit-start" type="date" formControlName="start" class="form-control"
                 [class.is-invalid]="submitted && f['start'].invalid">
@@ -59,7 +71,7 @@
                 class="form-control" [class.is-invalid]="submitted && f['perPerson'].invalid">
             <div *ngIf="submitted && f['perPerson'].errors" class="invalid-feedback">
                 <span *ngIf="f['perPerson'].errors?.['required']">Price is required.</span>
-                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['pattern']">
+                <span *ngIf="f['perPerson'].errors?.['min'] || f['perPerson'].errors?.['max'] || f['perPerson'].errors?.['pattern']">
                     Enter a valid nonnegative price with up to two decimal places.
                 </span>
             </div>

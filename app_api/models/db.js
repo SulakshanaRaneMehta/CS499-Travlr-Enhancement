@@ -1,14 +1,20 @@
 const mongoose = require('mongoose');
 const readline = require('readline');
+const { getDatabaseUri } = require('./database-config');
 
-const host = process.env.DB_HOST || '127.0.0.1';
-const dbURI = `mongodb://${host}/travlr`;
+const dbURI = getDatabaseUri();
 
 const connect = async () => {
+    if (mongoose.connection.readyState !== 0) {
+        return mongoose.connection;
+    }
+
     try {
         await mongoose.connect(dbURI);
+        return mongoose.connection;
     } catch (error) {
         console.error('Mongoose connection failed:', error.message);
+        throw error;
     }
 };
 
@@ -50,7 +56,11 @@ process.on('SIGTERM', async () => {
     process.exit(0);
 });
 
-setTimeout(connect, 1000);
+connect().catch(() => {
+    process.exitCode = 1;
+});
 require('./travlr');
 
 module.exports = mongoose;
+module.exports.connect = connect;
+module.exports.dbURI = dbURI;

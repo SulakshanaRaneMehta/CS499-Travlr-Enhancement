@@ -1,0 +1,266 @@
+
+> travlr@0.0.0 test
+> node --test
+
+TAP version 13
+# Subtest: rejects requests without an authorization header
+ok 1 - rejects requests without an authorization header
+  ---
+  duration_ms: 1.197353
+  type: 'test'
+  ...
+# Subtest: rejects a malformed bearer header
+ok 2 - rejects a malformed bearer header
+  ---
+  duration_ms: 0.280145
+  type: 'test'
+  ...
+# Subtest: rejects an expired token without continuing
+ok 3 - rejects an expired token without continuing
+  ---
+  duration_ms: 3.004297
+  type: 'test'
+  ...
+# Subtest: accepts a valid token and attaches its payload
+ok 4 - accepts a valid token and attaches its payload
+  ---
+  duration_ms: 2.011898
+  type: 'test'
+  ...
+# Subtest: compares compound index key order exactly
+ok 5 - compares compound index key order exactly
+  ---
+  duration_ms: 0.618205
+  type: 'test'
+  ...
+# Subtest: compares text-index weights without depending on property order
+ok 6 - compares text-index weights without depending on property order
+  ---
+  duration_ms: 7.91849
+  type: 'test'
+  ...
+# Subtest: accepts the complete required MongoDB index set
+ok 7 - accepts the complete required MongoDB index set
+  ---
+  duration_ms: 0.364559
+  type: 'test'
+  ...
+# Subtest: reports a missing or structurally incorrect index
+ok 8 - reports a missing or structurally incorrect index
+  ---
+  duration_ms: 0.351039
+  type: 'test'
+  ...
+# Subtest: extracts every named index from nested explain output
+ok 9 - extracts every named index from nested explain output
+  ---
+  duration_ms: 0.64227
+  type: 'test'
+  ...
+# Subtest: public catalog requests a controlled database-sorted page
+ok 10 - public catalog requests a controlled database-sorted page
+  ---
+  duration_ms: 0.760456
+  type: 'test'
+  ...
+# Subtest: public catalog combines every database page before rendering
+ok 11 - public catalog combines every database page before rendering
+  ---
+  duration_ms: 0.883838
+  type: 'test'
+  ...
+# Subtest: public catalog rejects malformed API response contracts
+ok 12 - public catalog rejects malformed API response contracts
+  ---
+  duration_ms: 0.463215
+  type: 'test'
+  ...
+# Subtest: transforms legacy string prices and derives nights from length
+ok 13 - transforms legacy string prices and derives nights from length
+  ---
+  duration_ms: 1.495944
+  type: 'test'
+  ...
+# Subtest: preflight rejects invalid legacy values
+ok 14 - preflight rejects invalid legacy values
+  ---
+  duration_ms: 0.228188
+  type: 'test'
+  ...
+# Subtest: preflight detects codes that collide after normalization
+ok 15 - preflight detects codes that collide after normalization
+  ---
+  duration_ms: 0.444558
+  type: 'test'
+  ...
+# Subtest: normalizes route trip codes to uppercase
+ok 16 - normalizes route trip codes to uppercase
+  ---
+  duration_ms: 0.587279
+  type: 'test'
+  ...
+# Subtest: trims text fields and converts database values in trip payloads
+ok 17 - trims text fields and converts database values in trip payloads
+  ---
+  duration_ms: 0.300315
+  type: 'test'
+  ...
+# Subtest: uses an explicit whole-number nights value when supplied
+ok 18 - uses an explicit whole-number nights value when supplied
+  ---
+  duration_ms: 0.1488
+  type: 'test'
+  ...
+# Subtest: marks malformed database values as invalid numbers for schema validation
+ok 19 - marks malformed database values as invalid numbers for schema validation
+  ---
+  duration_ms: 0.157804
+  type: 'test'
+  ...
+# Subtest: catalog controller returns the database query result
+ok 20 - catalog controller returns the database query result
+  ---
+  duration_ms: 1.742309
+  type: 'test'
+  ...
+# Subtest: catalog controller returns a controlled 400 query-validation response
+ok 21 - catalog controller returns a controlled 400 query-validation response
+  ---
+  duration_ms: 0.327034
+  type: 'test'
+  ...
+# Subtest: resort controller wraps database values in a stable response contract
+ok 22 - resort controller wraps database values in a stable response contract
+  ---
+  duration_ms: 0.232724
+  type: 'test'
+  ...
+# Subtest: uses controlled defaults for an empty catalog query
+ok 23 - uses controlled defaults for an empty catalog query
+  ---
+  duration_ms: 0.874965
+  type: 'test'
+  ...
+# Subtest: parses supported database filters, sorting, and pagination
+ok 24 - parses supported database filters, sorting, and pagination
+  ---
+  duration_ms: 0.382787
+  type: 'test'
+  ...
+# Subtest: rejects arrays and objects instead of accepting query operators
+ok 25 - rejects arrays and objects instead of accepting query operators
+  ---
+  duration_ms: 0.385961
+  type: 'test'
+  ...
+# Subtest: enforces sort and page-size allowlists
+ok 26 - enforces sort and page-size allowlists
+  ---
+  duration_ms: 0.98639
+  type: 'test'
+  ...
+# Subtest: rejects reversed numeric and date ranges
+ok 27 - rejects reversed numeric and date ranges
+  ---
+  duration_ms: 0.226144
+  type: 'test'
+  ...
+# Subtest: rejects invalid dates and noninteger night values
+ok 28 - rejects invalid dates and noninteger night values
+  ---
+  duration_ms: 0.155591
+  type: 'test'
+  ...
+# Subtest: limits text length and page depth
+ok 29 - limits text length and page depth
+  ---
+  duration_ms: 0.185614
+  type: 'test'
+  ...
+# Subtest: builds an exact-code filter with database ranges
+ok 30 - builds an exact-code filter with database ranges
+  ---
+  duration_ms: 0.576934
+  type: 'test'
+  ...
+# Subtest: builds a database text filter without copying raw query objects
+ok 31 - builds a database text filter without copying raw query objects
+  ---
+  duration_ms: 0.288957
+  type: 'test'
+  ...
+# Subtest: maps public sort names to indexed MongoDB fields with a direction-aligned code tie-breaker
+ok 32 - maps public sort names to indexed MongoDB fields with a direction-aligned code tie-breaker
+  ---
+  duration_ms: 0.338501
+  type: 'test'
+  ...
+# Subtest: recognizes only normalized values that can be complete trip codes
+ok 33 - recognizes only normalized values that can be complete trip codes
+  ---
+  duration_ms: 0.19603
+  type: 'test'
+  ...
+# Subtest: uses the unique code index for an existing normalized trip code
+ok 34 - uses the unique code index for an existing normalized trip code
+  ---
+  duration_ms: 1.629611
+  type: 'test'
+  ...
+# Subtest: uses MongoDB text search when no exact code exists
+ok 35 - uses MongoDB text search when no exact code exists
+  ---
+  duration_ms: 0.299794
+  type: 'test'
+  ...
+# Subtest: does not perform an exact-code probe for a multiword search
+ok 36 - does not perform an exact-code probe for a multiword search
+  ---
+  duration_ms: 0.171103
+  type: 'test'
+  ...
+# Subtest: clamps a page after counting and applies skip and limit in MongoDB
+ok 37 - clamps a page after counting and applies skip and limit in MongoDB
+  ---
+  duration_ms: 0.747947
+  type: 'test'
+  ...
+# Subtest: returns a controlled empty-page summary
+ok 38 - returns a controlled empty-page summary
+  ---
+  duration_ms: 0.238493
+  type: 'test'
+  ...
+# Subtest: returns sorted case-insensitive resort options from the database
+ok 39 - returns sorted case-insensitive resort options from the database
+  ---
+  duration_ms: 6.266304
+  type: 'test'
+  ...
+# Subtest: casts valid database fields and normalizes the unique code
+ok 40 - casts valid database fields and normalizes the unique code
+  ---
+  duration_ms: 5.67496
+  type: 'test'
+  ...
+# Subtest: rejects fractional nights
+ok 41 - rejects fractional nights
+  ---
+  duration_ms: 1.583944
+  type: 'test'
+  ...
+# Subtest: rejects prices with more than two decimal places
+ok 42 - rejects prices with more than two decimal places
+  ---
+  duration_ms: 0.575321
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 469.112212
